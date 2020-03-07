@@ -1,5 +1,7 @@
-const logger = require('../utils/logger');
+const { logger } = require('../utils/logger');
 
+// We can tell this is a error middleware because this has 4 arguements 
+// the first being an error
 const errorHandler = (
   err,
   req,
