@@ -11,7 +11,7 @@ const listGroup = (req, res) => {
 const postGroup = async (req, res) => {
   const id = groupsData.groups.length + 1;
   const newgroupsData = {
-    groups: [...groupsData.groups, { id, ...req.body }]
+    groups: [...groupsData.groups, { id: parseInt(id, 10), ...req.body }]
   };
   await writeFile("db/groups.data.json", JSON.stringify(newgroupsData));
   res.status(201);
