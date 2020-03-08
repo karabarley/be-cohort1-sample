@@ -5,9 +5,12 @@ const bodyParser = require("body-parser");
 const router = require("./api");
 const { logger } = require("./utils/logger");
 const { errorHandler } = require("./middleware/error-handler");
+const swaggerDocs = require("./../swaggerDocs")
 
 // Create a new express application instance
 const app = express();
+// Add swagger documentation
+
 
 // The port the express app will listen on
 const port = 3000;
@@ -18,6 +21,7 @@ app.use(bodyParser.json());
 app.use(morgan("tiny", { stream: logger.stream }));
 // Top-level router - makes it easier to version apis (seperation of concerns)
 app.use("/", router);
+swaggerDocs(app);
 app.use(errorHandler); // app-level middleware 
 // this needs to be the very last middleware that needs to be defined
 // (doesn't crash whole app, when running to an error)
