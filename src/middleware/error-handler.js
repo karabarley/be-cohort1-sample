@@ -1,5 +1,12 @@
-const logger = require('../utils/logger');
+const { logger } = require('../utils/logger');
 
+const ERROR_CODES = {
+  UNPROCESSABLE_ENTITY: 422,
+  INTERNAL_SERVER_ERROR: 500
+};
+
+// We can tell this is a error middleware because this has 4 arguements 
+// the first being an error
 const errorHandler = (
   err,
   req,
@@ -12,5 +19,6 @@ const errorHandler = (
 };
 
 module.exports = {
-  errorHandler
+  errorHandler,
+  ERROR_CODES
 }
